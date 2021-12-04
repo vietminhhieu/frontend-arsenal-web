@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.sign-in {
+  background-color: rgb(250, 250, 250);
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-header {
+  padding: 1rem;
+  display: flex;
+}
+
+.arsenal-logo {
+  width: 1.5rem;
+  margin-right: 1rem;
+}
+
+.right-header {
+  padding: 1rem;
+}
+
+.sign-in__contents {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.sign-in__img {
+  height: 20em;
+  margin-inline: 5em;
+}
+.sign-in__auth {
+  border: 1px transparent #000;
+  border-radius: 5%;
+  padding: 4px 48px 0px;
+  background-color: #fff;
+  position: relative;
+  margin-inline: 5em;
+}
+
+h2 {
+  padding: 48px 0 40px;
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.form-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-password__link {
+  font-size: 12px;
+  color: #33333366;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sign-in__button {
+  padding: 70px 0 70px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.sign-in__footer {
+  background-color: #000;
+  color: white;
+  width: 100.1%;
+  font-size: 12px;
+  padding: 12px 0px;
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  right: 0;
+  border-bottom-left-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+
+.footer__info {
+  color: #e0e0e0;
+}
+
+.sign-up__link {
+  color: white !important;
+  padding-left: 5px;
+}
