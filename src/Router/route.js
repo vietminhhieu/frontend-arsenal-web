@@ -7,6 +7,7 @@ import { Test } from "../Test/Test";
 import SignUpSuccess from "../Page/Auth/SignUp/SignUpSuccess";
 import PWRecoverySuccess from "../Page/Auth/PasswordRecovery/PWRecoverySuccess";
 import NewPW from "../Page/Auth/PasswordRecovery/NewPW";
+import { ProductList } from "../Page/ProductList/ProductList";
 
 const routerBeforeLogin = [
   {
@@ -14,6 +15,12 @@ const routerBeforeLogin = [
     exact: true,
     component: Home,
     name: "Home",
+  },
+  {
+    path: routerName.PRODUCT_LIST,
+    exact: true,
+    component: ProductList,
+    name: "ProductList",
   },
 
   {

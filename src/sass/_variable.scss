@@ -1,0 +1,19 @@
+// breakpoints
+$breakpoints-xs: 0; // <576px (mobile) 1
+$breakpoints-sm: 576px; //>=576px (small tablet) 1
+$breakpoints-md: 768px; //>=768px (ipad) 2
+$breakpoints-lg: 992px; //>=992px (ipad pro) 2
+$breakpoints-xl: 1200px; //>=1200px (nest hub max) 3
+$breakpoints-xxl: 1400px; //>=1400px (pc) 3
+
+//color system
+$black: #000;
+$black2: #333;
+$white: #fff;
+$gray1: #e3e3e3;
+$gray2: #f2f2f2;
+$main-color: #f50057;
+
+@function rem($pixels, $content: 16) {
+  @return ($pixels / $content) * 1rem;
+}

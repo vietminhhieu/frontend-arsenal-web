@@ -1,0 +1,72 @@
+@import "../../sass/variable.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  padding-inline: 12.5rem;
+}
+
+/* FOOTER */
+.footer {
+  padding: 2rem;
+  ul {
+    list-style: none;
+
+    img {
+      width: 15rem;
+    }
+
+    li {
+      font-size: 1.25rem;
+      padding: 0.25rem;
+    }
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+  .container-fluid {
+    padding-inline: 6.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoints-xl) {
+  .container-fluid {
+    padding-inline: 0.5rem;
+  }
+}
+
+//sm
+@media screen and (max-width: $breakpoints-md) {
+  .footer-info {
+  }
+
+  .footer-map {
+    display: none;
+  }
+
+  .footer-fanpage {
+    display: none;
+  }
+}
+
+//md
+@media screen and (max-width: $breakpoints-xl) {
+  .footer-info {
+  }
+
+  .footer-map {
+  }
+
+  .footer-fanpage {
+    display: none;
+  }
+}
+
+//xl
+@media screen and (min-width: $breakpoints-xl) {
+}

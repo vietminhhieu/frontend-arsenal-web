@@ -1,20 +1,232 @@
-.wrapper {
-  width: 100%;
-  //   min-height: 100vh;
-  height: 100vh;
+@import "../../sass/variable.scss";
 
-  .box {
-    width: 100px;
-    height: 100px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  padding-inline: 12.5rem;
+}
+
+/* CAROUSEL */
+
+.carousel.carousel-dark {
+  .carousel-indicators {
+    bottom: -1rem;
+
+    button {
+      height: 0.25rem;
+      width: 2rem;
+      display: none;
+    }
+
+    :not(.active) {
+      background-color: $white;
+    }
+
+    :not(.active):hover {
+      background-color: $black2;
+    }
+
+    .active {
+      background-color: $main-color;
+    }
   }
 
-  .red {
-    background-color: red;
+  .carousel-inner {
+    width: 100%;
   }
-  .blue {
-    background-color: blue;
+
+  .carousel-control-prev {
+    .carousel-control-prev-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: none;
+    }
+
+    .carousel-control-prev-icon:hover {
+      background-color: $black;
+      border-radius: 50%;
+    }
   }
-  .green {
-    background-color: green;
+
+  .carousel-control-next {
+    .carousel-control-next-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: none;
+    }
+
+    .carousel-control-next-icon:hover {
+      background-color: $black;
+      border-radius: 50%;
+    }
+  }
+}
+
+.carousel.carousel-dark:hover .carousel-control-prev-icon,
+.carousel.carousel-dark:hover .carousel-control-next-icon {
+  background-color: $black;
+  border-radius: 50%;
+  display: block;
+}
+
+.carousel.carousel-dark:hover .carousel-indicators button {
+  display: block;
+}
+
+/* MAIN-PRODUCT */
+.main__product.row {
+  padding: 5rem 1rem 2rem;
+
+  .col-xl-4.col-md-6.col-sm-12 {
+    margin-bottom: 2rem;
+
+    .main__product-img {
+      padding-bottom: -10px;
+      border-radius: 10px;
+      border: 0.125rem $gray1 solid;
+      box-shadow: 0.5rem 1rem 1.5rem rgba(0, 0, 0, 0.3);
+
+      img {
+        padding: 2rem 0.5rem;
+      }
+
+      h4 {
+        padding: 1rem 0 2rem;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        margin-bottom: 0;
+        background-color: $gray2;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+    }
+    .main__product-img:hover {
+      transform: scale(1.05);
+      transition: 0.5s ease;
+      cursor: pointer;
+    }
+  }
+}
+
+/* BUSINESS-IMG */
+.business__img {
+  img {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
+/* STORE-INFO */
+.store__info {
+  font-size: 1rem;
+
+  h2 {
+    font-size: 1.25em;
+    font-weight: bolder;
+    padding: 1.5em 0;
+  }
+
+  .store__info-top {
+    padding-inline: 1rem;
+    img {
+      cursor: pointer;
+    }
+
+    h4 {
+      font-size: 1.125em;
+      font-weight: 700;
+      letter-spacing: 0.025em;
+      padding: 1.5rem 0;
+    }
+  }
+
+  .store__info-bottom {
+    padding: 1rem 1rem 5rem;
+
+    img {
+      cursor: pointer;
+      width: 25%;
+      margin: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    h6 {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+/* RESPONSIVE */
+//1200px -> 1400px
+@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+  .container-fluid {
+    padding-inline: 6.5rem;
+  }
+}
+
+//<1200px
+@media screen and (max-width: $breakpoints-xl) {
+  .container-fluid {
+    padding-inline: 0.5rem;
+  }
+}
+
+//992px -> =1200px
+@media screen and (min-width: $breakpoints-lg) and (max-width: $breakpoints-xl) {
+  .main__product.row {
+    .col-xl-4.col-md-6.col-sm-12 {
+      .main__product-img {
+        img {
+          padding: 2rem 8rem;
+        }
+      }
+    }
+  }
+}
+
+//768px -> =992px
+@media screen and (min-width: $breakpoints-md) and (max-width: $breakpoints-lg) {
+  .main__product.row {
+    .col-xl-4.col-md-6.col-sm-12 {
+      .main__product-img {
+        img {
+          padding: 2rem 4rem;
+        }
+      }
+    }
+  }
+}
+
+//576px -> 768px
+@media screen and (min-width: $breakpoints-sm) and (max-width: $breakpoints-md) {
+  .main__product.row {
+    .col-xl-4.col-md-6.col-sm-12 {
+      .main__product-img {
+        img {
+          padding: 2rem 10rem;
+        }
+      }
+    }
+  }
+}
+
+//<576px
+@media screen and (min-width: $breakpoints-xs) and (max-width: $breakpoints-sm) {
+  .main__product.row {
+    .col-xl-4.col-md-6.col-sm-12 {
+      .main__product-img {
+        img {
+          padding: 2rem 5rem;
+        }
+      }
+    }
   }
 }

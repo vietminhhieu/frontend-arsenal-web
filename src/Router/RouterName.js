@@ -7,6 +7,8 @@ const routerName = {
   PWRECOVERY_NEWPASSWORD: "/password-recovery/new-password/:token",
   PWRECOVERY_SUCCESS: "/password-recovery/new-password/:token/success",
   TEST: "/test",
+  PRODUCT_LIST: "/product-list/:category",
+  PRODUCT_DETAIL: "/product-list/:category/:id",
 };
 
 export default routerName;

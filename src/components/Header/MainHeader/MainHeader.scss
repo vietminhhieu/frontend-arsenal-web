@@ -1,0 +1,154 @@
+@import "../../../sass/variable.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  padding-inline: 12.5rem;
+}
+
+/* MAIN-NAVIGATION */
+.main__nav {
+  background-color: $black;
+
+  .navbar-brand {
+    margin-right: 0;
+    margin-left: 0.5rem;
+
+    .img1 {
+      width: 2.5rem;
+    }
+
+    .img2 {
+      width: 8rem;
+      border: 0.125rem solid $white;
+      display: none;
+    }
+  }
+
+  .navbar-collapse {
+    color: $white;
+    font-size: 1rem;
+
+    .navbar-nav {
+      .nav-item {
+        .dropdown-toggle::after {
+          display: none;
+        }
+
+        .dropdown-menu {
+          background-color: $black;
+          .dropdown-item {
+            color: $white;
+          }
+
+          .dropdown-item:hover {
+            color: $black2;
+          }
+        }
+
+        .dropdown-menu:hover {
+          display: block;
+        }
+      }
+
+      .nav-link {
+        color: $white;
+        font-size: 1em;
+        padding-inline: 0.8em;
+      }
+
+      .nav-link:hover {
+        color: $main-color;
+      }
+    }
+
+    form {
+      align-items: center;
+
+      .form-control {
+        height: 2em;
+        border-radius: 0;
+      }
+
+      .nav-link.search {
+        padding: 0.177em 0.5em;
+        color: $black2;
+        background-color: $gray1;
+      }
+    }
+    .nav-link.cart {
+      color: $white;
+      display: flex;
+      align-items: center;
+      // display: none;
+
+      .MuiSvgIcon-root {
+        font-size: 1.75rem;
+        align-items: center;
+      }
+    }
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+  .container-fluid {
+    padding-inline: 6.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoints-xl) {
+  .container-fluid {
+    padding-inline: 0.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoints-lg) {
+  .main__nav {
+    .navbar-brand {
+      .img1 {
+        display: none;
+      }
+
+      .img2 {
+        display: block;
+      }
+    }
+
+    .navbar-collapse {
+      .navbar-nav {
+        .nav-item {
+          .dropdown-menu {
+            .dropdown-item {
+              display: flex;
+              justify-content: flex-end;
+            }
+          }
+        }
+
+        .nav-link {
+          display: flex;
+          justify-content: flex-end;
+          border-bottom: 0.0025rem groove $white;
+        }
+      }
+
+      form {
+        .form-control {
+        }
+
+        .nav-link.search {
+        }
+      }
+      .nav-link.cart {
+        .MuiSvgIcon-root {
+          color: red;
+        }
+      }
+    }
+  }
+}

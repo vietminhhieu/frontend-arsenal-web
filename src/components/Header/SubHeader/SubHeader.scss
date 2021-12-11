@@ -1,0 +1,71 @@
+@import "../../../sass/variable.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  padding-inline: 12.5rem;
+}
+
+/* SUB-NAVIGATION */
+.sub__nav {
+  background-color: $black2;
+
+  .navbar-brand {
+    padding-left: 1rem;
+
+    h3 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.025em;
+    }
+
+    h6 {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+  .navbar-nav {
+    padding-right: 1rem;
+
+    .nav-link {
+      color: $white;
+      font-size: rem(14);
+      margin-left: 0.5em;
+    }
+
+    .MuiSvgIcon-root {
+      margin-bottom: 0.5rem;
+      margin-right: 0.125rem;
+    }
+
+    // .cart .MuiSvgIcon-root {
+    //   font-size: 1.75rem;
+    //   align-items: center;
+    // }
+  }
+}
+
+/* RESPONSIVE */
+@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+  .container-fluid {
+    padding-inline: 6.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoints-xl) {
+  .container-fluid {
+    padding-inline: 0.5rem;
+  }
+}
+
+@media screen and (max-width: $breakpoints-lg) {
+  .sub__nav {
+    display: none;
+  }
+}
