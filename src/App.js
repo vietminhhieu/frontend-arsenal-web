@@ -13,17 +13,15 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          {router.map((route, index) => {
-            return (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.component}
-                name={route.name}
-              ></Route>
-            );
-          })}
+          {router.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.component}
+              name={route.name}
+            ></Route>
+          ))}
           <Redirect to={routerName.HOME} />
         </Switch>
       </Router>

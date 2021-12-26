@@ -24,7 +24,7 @@ const useStyleTextField = makeStyles(() => ({
 
 function PWRecovery() {
   //Sử dụng useHistory xử lý để khi click vào button không reload lại trang
-  const history = useHistory();
+  let history = useHistory();
   const handleButtonClick = (location) => {
     history.push(location);
   };

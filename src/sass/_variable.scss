@@ -9,10 +9,12 @@ $breakpoints-xxl: 1400px; //>=1400px (pc) 3
 //color system
 $black: #000;
 $black2: #333;
+$black3: #666;
 $white: #fff;
 $gray1: #e3e3e3;
 $gray2: #f2f2f2;
 $main-color: #f50057;
+$red1: #d70018;
 
 @function rem($pixels, $content: 16) {
   @return ($pixels / $content) * 1rem;

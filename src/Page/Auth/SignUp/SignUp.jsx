@@ -83,7 +83,7 @@ function SignUp() {
 
   //3rd: add loading for better UI/UX
 
-  const history = useHistory();
+  let history = useHistory();
   const handleClick = (location) => {
     history.push(location);
   };

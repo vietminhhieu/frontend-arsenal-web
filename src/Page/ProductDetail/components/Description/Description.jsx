@@ -1,5 +1,5 @@
-import { Container } from "react-bootstrap";
-import "./Test.scss";
+import React from "react";
+import "./Description.scss";
 
 const outstandingFeatureArr = [
   "Mạnh mẽ, siêu nhanh với chip A14, RAM 6GB, mạng 5G tốc độ cao",
@@ -40,24 +40,24 @@ const handleRender = (feature) => {
   return <p>{feature}</p>;
 };
 
-export const Test = () => {
+const Description = () => {
   return (
-    <Container fluid>
-      <div className="description">
-        <div className="outstanding-feature">
-          <strong>Đặc điểm nổi bật</strong>
-          <ul>
-            {outstandingFeatureArr.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className="detail-feature">
-          {detailFeatureArr.map((item, index) => (
-            <div key={index}>{handleRender(item)}</div>
+    <div className="description">
+      <div className="outstanding-feature">
+        <strong>Đặc điểm nổi bật</strong>
+        <ul>
+          {outstandingFeatureArr.map((item, index) => (
+            <li key={index}>{item}</li>
           ))}
-        </div>
+        </ul>
       </div>
-    </Container>
+      <div className="detail-feature">
+        {detailFeatureArr.map((item, index) => (
+          <div key={index}>{handleRender(item)}</div>
+        ))}
+      </div>
+    </div>
   );
 };
+
+export default Description;

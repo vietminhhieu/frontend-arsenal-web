@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-.container-fluid {
-  padding-inline: 12.5rem;
-}
-
 /* FOOTER */
 .footer {
   padding: 2rem;
@@ -28,17 +24,17 @@
 }
 
 /* RESPONSIVE */
-@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
-  .container-fluid {
-    padding-inline: 6.5rem;
-  }
-}
+// @media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+//   .container-fluid {
+//     padding-inline: 6.5rem;
+//   }
+// }
 
-@media screen and (max-width: $breakpoints-xl) {
-  .container-fluid {
-    padding-inline: 0.5rem;
-  }
-}
+// @media screen and (max-width: $breakpoints-xl) {
+//   .container-fluid {
+//     padding-inline: 0.5rem;
+//   }
+// }
 
 //sm
 @media screen and (max-width: $breakpoints-md) {

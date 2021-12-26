@@ -11,7 +11,10 @@ const Footer = () => {
           <Col sm={12} md={6} xl={4} className="footer-info">
             <ul style={{ color: "#fff" }}>
               <li>
-                <img src="./image/logo/logo-mobile2.jpg" alt="" />
+                <img
+                  src="https://res.cloudinary.com/duitozhul/image/upload/v1639843038/Smartphone_Web_Frontend/Logo/logo-mobile2.jpg"
+                  alt=""
+                />
               </li>
               <li>Địa chỉ: Số 69 Phú Diễn, Bắc Từ Liêm, Hà Nội</li>
               <li>Hotline: 0964 819 769</li>

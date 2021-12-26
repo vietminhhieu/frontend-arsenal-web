@@ -1,0 +1,217 @@
+@import "../../sass/variable.scss";
+
+.general_info {
+  padding: 3rem 1.5rem;
+
+  .image_slider {
+    padding: 0.75em;
+
+    .image-gallery {
+      .image-gallery-content {
+        width: 80%;
+        object-fit: cover;
+        padding: auto;
+
+        //top-slide
+        .image-gallery-slide-wrapper {
+          padding: 1rem;
+
+          //tất cả icon
+          .image-gallery-icon:hover {
+            color: $main-color;
+          }
+          //mũi tên trái
+          .image-gallery-left-nav svg {
+            width: 1.75rem;
+          }
+          //mũi tên phải
+          .image-gallery-right-nav svg {
+            width: 1.75rem;
+          }
+          //nút play
+          .image-gallery-play-button svg {
+            display: none;
+          }
+          //nút phóng to
+          .image-gallery-fullscreen-button {
+          }
+        }
+
+        //bottom-slide
+        .image-gallery-thumbnails-wrapper {
+          .image-gallery-thumbnails {
+            .image-gallery-thumbnails-container {
+              .image-gallery-thumbnail {
+                width: 16%;
+                object-fit: cover;
+              }
+              .image-gallery-thumbnail:hover {
+                border-color: $main-color;
+              }
+              .image-gallery-thumbnail.active {
+                border-color: $black;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .smartphone_detail {
+    text-align: left;
+    padding: 0.75em;
+
+    label {
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin: 0.5em 0;
+
+      span {
+        font-weight: lighter;
+      }
+    }
+
+    .smartphone_detail-info {
+      h1 {
+        font-size: 1.75rem;
+        font-weight: bolder;
+        margin-bottom: 0.5em;
+      }
+
+      .smartphone_detail-color {
+        margin-bottom: 0.5rem;
+
+        .color-selected {
+          Button {
+            margin-right: 0.5rem;
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+            box-shadow: 0 0 0 0.025rem $black3;
+            border: solid 2px $white;
+          }
+
+          Button:hover {
+            box-shadow: 0 0 0 0.15rem $main-color;
+          }
+
+          Button:focus {
+            box-shadow: 0 0 0 0.15rem $black;
+          }
+        }
+      }
+
+      .smartphone_detail-capacity {
+        margin-bottom: 0.5rem;
+
+        .capacity-selected.d-flex {
+          Button {
+            margin-right: 0.5em;
+            border: 1px solid $black3;
+          }
+
+          Button:hover {
+            background-color: $white;
+            color: $black;
+            border-color: $white;
+            box-shadow: 0 0 0 0.15rem $main-color;
+          }
+
+          Button:focus {
+            box-shadow: 0 0 0 0.15rem $black;
+            border-color: $white;
+          }
+        }
+      }
+
+      .smartphone_detail-price {
+        font-size: 1.4rem;
+        font-weight: bolder;
+        letter-spacing: 0.1rem;
+      }
+
+      .smartphone_detail-payment {
+        margin-top: 1rem;
+        .product-quantity input {
+          width: 3.5em;
+          padding: 0.25em;
+          bottom: 1rem;
+        }
+
+        .payment-method {
+          margin-left: 2em;
+          flex-wrap: wrap;
+
+          Button {
+            padding-inline: 2em;
+            margin-right: 1em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-top-left-radius: 1.5em;
+            border-top-right-radius: 1.5em;
+            border-bottom-left-radius: 1.5em;
+            border-bottom-right-radius: 1.5em;
+          }
+
+          .add-to-cart {
+            background-color: $black;
+            border-color: $black;
+          }
+
+          .add-to-cart:hover {
+            background-color: $main-color;
+            border-color: $main-color;
+          }
+
+          .amortization:hover {
+            background-color: $main-color;
+            border-color: $main-color;
+          }
+        }
+      }
+    }
+
+    .smartphone_detail-promotion {
+      margin-top: 2rem;
+      margin-bottom: 3rem;
+
+      .capacity-title {
+        margin-bottom: 1rem;
+      }
+
+      ul li {
+        font-size: 0.875em;
+      }
+    }
+
+    .smartphone_detail-category {
+    }
+  }
+}
+
+.extra_info {
+  .extra_info-tabs {
+    padding-left: 0;
+    margin-bottom: 0;
+
+    .tab-item {
+      list-style: none;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      color: $black2;
+      font-size: 0.875rem;
+      font-weight: bolder;
+      cursor: pointer;
+    }
+  }
+
+  hr {
+    margin: 0;
+  }
+}

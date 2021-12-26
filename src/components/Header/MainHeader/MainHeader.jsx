@@ -1,17 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "./MainHeader.scss";
-import {
-  Container,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
 import { Search, LocalMallOutlined } from "@material-ui/icons";
 
 const MainHeader = () => {
-  const [onHover, setOnHover] = useState(false);
   return (
     <Navbar
       collapseOnSelect
@@ -21,9 +13,17 @@ const MainHeader = () => {
       className="main__nav"
     >
       <Container fluid className="">
-        <Navbar.Brand href="#home">
-          <img src="./image/logo/logo-rectangle.jpg" alt="" className="img1" />
-          <img src="./image/logo/logo-mobile2.jpg" alt="" className="img2" />
+        <Navbar.Brand href="/">
+          <img
+            src="https://res.cloudinary.com/duitozhul/image/upload/v1639843039/Smartphone_Web_Frontend/Logo/logo-rectangle.jpg"
+            alt=""
+            className="img1"
+          />
+          <img
+            src="https://res.cloudinary.com/duitozhul/image/upload/v1639843038/Smartphone_Web_Frontend/Logo/logo-mobile2.jpg"
+            alt=""
+            className="img2"
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -46,15 +46,15 @@ const MainHeader = () => {
                 iPhone X/XR
               </NavDropdown.Item>
             </NavDropdown> */}
-            <Nav.Link href="/product-list/iPhone">iPhone</Nav.Link>
-            <Nav.Link href="/product-list/Samsung">Samsung</Nav.Link>
-            <Nav.Link href="/product-list/Xiaomi">Xiaomi</Nav.Link>
-            <Nav.Link href="/product-list/OPPO">OPPO</Nav.Link>
-            <Nav.Link href="/product-list/Realmi">Realmi</Nav.Link>
-            <Nav.Link href="/product-list/Vsmart">Vsmart</Nav.Link>
-            <Nav.Link href="/product-list/ASUS">ASUS</Nav.Link>
-            <Nav.Link href="/product-list/Vivo">Vivo</Nav.Link>
-            <Nav.Link href="/product-list/OnePlus">OnePlus</Nav.Link>
+            <Nav.Link href="/product-list/iphone">iPhone</Nav.Link>
+            <Nav.Link href="/product-list/samsung">Samsung</Nav.Link>
+            <Nav.Link href="/product-list/xiaomi">Xiaomi</Nav.Link>
+            <Nav.Link href="/product-list/oppo">OPPO</Nav.Link>
+            <Nav.Link href="/product-list/realmi">Realmi</Nav.Link>
+            <Nav.Link href="/product-list/vsmart">Vsmart</Nav.Link>
+            <Nav.Link href="/product-list/asus">ASUS</Nav.Link>
+            <Nav.Link href="/product-list/vivo">Vivo</Nav.Link>
+            <Nav.Link href="/product-list/oneplus">OnePlus</Nav.Link>
           </Nav>
           <Form className="d-flex">
             <FormControl
@@ -62,11 +62,11 @@ const MainHeader = () => {
               placeholder="Bạn muốn mua gì?"
               aria-label="Search"
             />
-            <Nav.Link href="#" className="search">
+            <Nav.Link href="" className="search">
               <Search />
             </Nav.Link>
           </Form>
-          <Nav.Link href="#" className="cart">
+          <Nav.Link href="/cart" className="cart">
             <LocalMallOutlined />
           </Nav.Link>
         </Navbar.Collapse>

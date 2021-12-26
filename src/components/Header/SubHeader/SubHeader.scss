@@ -6,10 +6,6 @@
   box-sizing: border-box;
 }
 
-.container-fluid {
-  padding-inline: 12.5rem;
-}
-
 /* SUB-NAVIGATION */
 .sub__nav {
   background-color: $black2;
@@ -52,17 +48,17 @@
 }
 
 /* RESPONSIVE */
-@media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
-  .container-fluid {
-    padding-inline: 6.5rem;
-  }
-}
+// @media screen and (min-width: $breakpoints-xl) and(max-width: $breakpoints-xxl) {
+//   .container-fluid {
+//     padding-inline: 6.5rem;
+//   }
+// }
 
-@media screen and (max-width: $breakpoints-xl) {
-  .container-fluid {
-    padding-inline: 0.5rem;
-  }
-}
+// @media screen and (max-width: $breakpoints-xl) {
+//   .container-fluid {
+//     padding-inline: 0.5rem;
+//   }
+// }
 
 @media screen and (max-width: $breakpoints-lg) {
   .sub__nav {

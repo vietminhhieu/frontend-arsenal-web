@@ -48,7 +48,7 @@ function SignIn() {
   const [isLoaing, setIsLoaing] = useState(false);
 
   //Sử dụng useHistory xử lý để khi click vào button không reload lại trang
-  const history = useHistory();
+  let history = useHistory();
   const handleClick = (location) => {
     history.push(location);
   };

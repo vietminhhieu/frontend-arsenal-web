@@ -1,0 +1,43 @@
+@import "../../../../sass/variable";
+
+.description {
+  text-align: left;
+  padding: 1rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+  margin: 1rem 0 2rem;
+  border-radius: 0.75rem;
+
+  strong {
+    font-size: 1.25rem;
+  }
+
+  .outstanding-feature {
+    background-color: $gray2;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    margin-bottom: 1em;
+
+    strong {
+      color: $red1;
+    }
+
+    ul {
+      li {
+      }
+    }
+  }
+
+  .detail-feature {
+    strong {
+    }
+
+    img {
+      width: 100%;
+      border-radius: 0.2em;
+      margin-bottom: 1em;
+    }
+
+    p {
+    }
+  }
+}

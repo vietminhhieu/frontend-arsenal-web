@@ -12,7 +12,7 @@ const SubHeader = () => {
       className="sub__nav px-2"
     >
       <Container fluid>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <h3> Hiếu Viết Store</h3>
           <h6>Uy tín - Chất lượng - Chính hãng</h6>
         </Navbar.Brand>
@@ -20,11 +20,11 @@ const SubHeader = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto"></Nav>
           <Nav>
-            <Nav.Link href="#">
+            <Nav.Link href="/contact">
               <Call />
               <span>0964819769</span>
             </Nav.Link>
-            <Nav.Link href="#">
+            <Nav.Link href="/address">
               <LocationOn />
               <span>Số 69 Phú Diễn, Bắc Từ Liêm, Hà Nội</span>
             </Nav.Link>

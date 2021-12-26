@@ -22,7 +22,7 @@ export const Home = () => {
 
       {/* CAROUSEL */}
       <Carousel className=" w-100 " variant="dark">
-        {carouselArr.map((carousel, index) => (
+        {carouselArr?.map((carousel, index) => (
           <Carousel.Item key={index}>
             <img
               className="d-block w-100"
@@ -50,7 +50,7 @@ export const Home = () => {
       {/* BUSINESS-IMG */}
       <div className="business__img">
         <img
-          src="https://cdn-dgcei.nitrocdn.com/QaFavQVnaqgHtiSsAelwGDKVguOuACXM/assets/static/optimized/rev-88630e9/wp-content/uploads/2021/09/Desktop-U%CC%9Bu-da%CC%83i-nha%CC%82n-vie%CC%82n-1536x704.png"
+          src="https://res.cloudinary.com/duitozhul/image/upload/v1640143846/Smartphone_Web_Frontend/StoreInfo/BusinessImg/BusinessImg.png"
           alt=""
         />
       </div>
@@ -59,7 +59,7 @@ export const Home = () => {
       <Container fluid className="store__info">
         <h2 className="text-center">Yêu Smartphone, đến Hiếu Viết Store</h2>
         <Row className="store__info-top">
-          {storeInfoTop.map((item, index) => (
+          {storeInfoTop?.map((item, index) => (
             <Col sm={12} lg={6} key={index}>
               <img src={item.imgSource} alt="" width="100%" />
               <h4>{item.h4}</h4>
@@ -67,7 +67,7 @@ export const Home = () => {
           ))}
         </Row>
         <Row className="store__info-bottom">
-          {storeInfoBottom.map((item, index) => (
+          {storeInfoBottom?.map((item, index) => (
             <Col sm={12} md={6} xl={4} key={index}>
               <img src={item.imgSource} alt="" width="15%" />
               <h4>{item.h4}</h4>

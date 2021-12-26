@@ -1,5 +1,5 @@
 const routerName = {
-  HOME: "/home",
+  HOME: "/",
   LOGIN: "/login",
   SIGNUP: "/sign-up",
   SIGNUP_SUCCESS: "/sign-up/success/:token",
