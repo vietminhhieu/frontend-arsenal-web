@@ -1,18 +1,27 @@
 @import "../../../../sass/variable";
 
-.table {
+.table_info {
+  padding: 1rem;
   box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
   margin: 1rem 0 2rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  // text-align: justify;
 
-  tbody {
-    tr {
-      .name-column {
-        font-weight: bold;
-      }
+  .table {
+    // box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+    // margin: 1rem 0 2rem;
 
-      .value-column {
-        text-align: left;
-        padding-inline: 1rem;
+    tbody {
+      tr {
+        .name-column {
+          font-weight: bold;
+        }
+
+        .value-column {
+          text-align: left;
+          padding-inline: 1rem;
+        }
       }
     }
   }

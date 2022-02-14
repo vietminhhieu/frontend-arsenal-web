@@ -1,0 +1,41 @@
+@import "../../../sass/variable";
+
+// .me-auto.navbar-nav {
+//   display: none;
+// }
+
+// .navbar-collapse.collapse {
+//   flex: inherit;
+// }
+
+.user-info {
+  justify-content: center;
+  padding: 1rem 0.125rem;
+  margin-top: 1rem;
+  border: 1px solid $gray1;
+  border-radius: 0.75rem;
+
+  .block-menu {
+    list-style: none;
+    text-align: left;
+    padding: 1rem;
+    box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+    margin: 1rem 0 2rem;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    width: fit-content;
+
+    .block-menu__item {
+      padding: 0.25rem 0.5rem;
+      color: $black3;
+
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+
+    .block-menu__item:hover {
+      color: $main-color;
+    }
+  }
+}

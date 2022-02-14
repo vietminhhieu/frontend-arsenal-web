@@ -1,84 +1,96 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ExtraInfo.scss";
 import { Table } from "react-bootstrap";
+import { AxiosClient } from "../../../../services/API/axiosConnection";
+import localApiName from "../../../../services/API/axiosEndPoint";
 
 const detailInfo = [
   {
-    name: "Kích thước màn hình",
-    value: "6.1 inches",
-  },
-  {
     name: "Công nghệ màn hình",
-    value: "OLED",
+    value: "",
   },
   {
     name: "Độ phân giải màn hình",
-    value: "2532 x 1170 pixels",
+    value: "",
   },
   {
-    name: "Camera trước",
-    value: "12MP, f/2.2",
+    name: "Kích thước màn hình",
+    value: "",
   },
   {
     name: "Camera sau",
-    value: "Camera góc rộng: 12MP, f/1.6<br>Camera góc siêu rộng: 12MP, ƒ/2.4",
+    value: "",
   },
   {
     name: "Quay video",
-    value:
-      "4K 2160p@30fps<br>FullHD 1080p@30fps<br>FullHD 1080p@60fps<br>HD 720p@30fps",
+    value: "",
   },
   {
-    name: "Chipset",
-    value: "Apple A15",
-  },
-  {
-    name: "Dung lượng RAM",
-    value: "4 GB",
-  },
-  {
-    name: "Pin",
-    value: "Khoảng 3.200mAh",
-  },
-  {
-    name: "Công nghệ sạc",
-    value:
-      "Sạc nhanh 20W, Sạc không dây, Sạc ngược không dây 15W, Sạc pin nhanh, Tiết kiệm pin",
-  },
-  {
-    name: "Cổng sạc",
-    value: "Lightning",
-  },
-  {
-    name: "Thẻ SIM",
-    value: "2 SIM (nano‑SIM và eSIM)",
+    name: "Camera trước",
+    value: "",
   },
   {
     name: "Hệ điều hành",
-    value: "iOS15",
+    value: "",
+  },
+  {
+    name: "Chip",
+    value: "",
+  },
+  {
+    name: "CPU",
+    value: "",
+  },
+  {
+    name: "GPU",
+    value: "",
+  },
+  {
+    name: "RAM",
+    value: "",
+  },
+  {
+    name: "Bộ nhớ trong",
+    value: "",
+  },
+  {
+    name: "SIM",
+    value: "",
+  },
+  {
+    name: "Wifi",
+    value: "",
+  },
+  {
+    name: "GPS",
+    value: "",
+  },
+  {
+    name: "Bluetooth",
+    value: "",
   },
   {
     name: "Kích thước",
-    value: "160.8 x 78.1 x 7.65mm",
+    value: "",
   },
   {
-    name: "Trọng lượng",
-    value: "240g",
+    name: "Khối lượng",
+    value: "",
   },
   {
-    name: "Chất liệu mặt lưng",
-    value: "Kính",
+    name: "Dung lượng pin",
+    value: "",
   },
   {
-    name: "Chất liệu khung viền",
-    value: "Kim loại",
+    name: "Loại pin",
+    value: "",
   },
 ];
 
 const handleNewLine = (value) => {
-  if (value.includes("<br>")) {
+  if (value.includes(" / ")) {
     let finalValue;
-    const newValue = value.split("<br>");
+    const newValue = value.split(" / ");
     {
       finalValue = newValue.map((val, index) => {
         return (
@@ -94,18 +106,46 @@ const handleNewLine = (value) => {
   return value;
 };
 
-const ExtraInfo = () => {
+const ExtraInfo = ({ idProduct }) => {
+  const [extraInfo, setExtraInfo] = useState([]);
+
+  async function fetchExtraInfoApi() {
+    const { data } = await AxiosClient.get(localApiName.apiExtraInfo);
+    let newExtraInfo;
+    data.map((item, index) => {
+      if (item.id_product === idProduct) {
+        newExtraInfo = Object.values(item);
+        newExtraInfo.pop(); //Delete first element
+        newExtraInfo.shift(); //Delete last element
+        newExtraInfo.shift();
+        detailInfo.map((item, index) => {
+          item.value = newExtraInfo[index];
+        });
+      }
+    });
+    setExtraInfo(detailInfo);
+  }
+
+  useEffect(() => {
+    fetchExtraInfoApi();
+  }, []);
+
   return (
-    <Table striped bordered>
-      <tbody>
-        {detailInfo.map((item, index) => (
-          <tr key={index}>
-            <td className="name-column">{item.name}</td>
-            <td className="value-column">{handleNewLine(item.value)}</td>
-          </tr>
-        ))}
-      </tbody>
-    </Table>
+    <div className="table_info">
+      <Table striped bordered>
+        <tbody>
+          {detailInfo.map((item, index) => {
+            // console.log(item, index);
+            return (
+              <tr key={index}>
+                <td className="name-column">{item.name}</td>
+                <td className="value-column">{handleNewLine(item.value)}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+    </div>
   );
 };
 

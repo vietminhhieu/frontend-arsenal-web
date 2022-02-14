@@ -6,6 +6,7 @@ const routerName = {
   PWRECOVERY: "/password-recovery",
   PWRECOVERY_NEWPASSWORD: "/password-recovery/new-password/:token",
   PWRECOVERY_SUCCESS: "/password-recovery/new-password/:token/success",
+  USER_INFO: "/user/information",
   TEST: "/test",
   PRODUCT_LIST: "/product-list/:category",
   PRODUCT_DETAIL: "/product-list/:category/:id",

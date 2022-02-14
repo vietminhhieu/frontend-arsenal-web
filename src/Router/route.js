@@ -3,12 +3,13 @@ import Home from "../Page/Home/Home";
 import SignIn from "../Page/Auth/SignIn/SignIn";
 import PWRecovery from "../Page/Auth/PasswordRecovery/PWRecovery";
 import SignUp from "../Page/Auth/SignUp/SignUp";
-import { Test } from "../Test/Test";
-import SignUpSuccess from "../Page/Auth/SignUp/SignUpSuccess";
-import PWRecoverySuccess from "../Page/Auth/PasswordRecovery/PWRecoverySuccess";
-import NewPW from "../Page/Auth/PasswordRecovery/NewPW";
+import Test from "../Test/Test";
+import SignUpSuccess from "../Page/Auth/SignUp/SignUpSuccess/SignUpSuccess";
+import PWRecoverySuccess from "../Page/Auth/PasswordRecovery/PWRecoverySuccess/PWRecoverySuccess";
+import NewPW from "../Page/Auth/PasswordRecovery/NewPW/NewPW";
 import { ProductList } from "../Page/ProductList/ProductList";
 import { ProductDetail } from "../Page/ProductDetail/ProductDetail";
+import UserInfo from "../Page/Auth/UserInfo/UserInfo";
 
 const routerBeforeLogin = [
   {
@@ -57,13 +58,20 @@ const routerBeforeLogin = [
     path: routerName.PWRECOVERY_NEWPASSWORD,
     exact: true,
     component: NewPW,
-    name: "PWRecovery",
+    name: "NewPW",
   },
+
   {
-    path: routerName.PWRECOVERY,
+    path: routerName.PWRECOVERY_SUCCESS,
     exact: true,
     component: PWRecoverySuccess,
-    name: "PWRecovery",
+    name: "PWRecoverySuccess",
+  },
+  {
+    path: routerName.USER_INFO,
+    exact: true,
+    component: UserInfo,
+    name: "UserInfo",
   },
   {
     path: routerName.TEST,

@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .sign-up {
@@ -44,19 +44,19 @@ header {
 .sign-up__auth {
   border: 1px transparent #000;
   border-radius: 5%;
-  padding: 4px 48px 0px;
+  padding: 0.25rem 3rem 0;
   background-color: #fff;
   position: relative;
   margin-inline: 5em;
 }
 
 h2 {
-  padding: 48px 0 40px;
+  padding: 3rem 0 2.5rem;
   font-size: 28px;
   font-weight: 400;
 }
 
-.form-list {
+.register__form-list {
   display: flex;
   flex-direction: column;
 }
@@ -87,4 +87,60 @@ h2 {
 .info__footer .sign-in__link {
   color: white !important;
   padding-left: 5px;
+}
+
+.info__footer .sign-in__link:hover {
+  color: #f50057 !important;
+}
+
+.error-text {
+  color: #f44336;
+  text-align: start;
+  margin-top: 3px;
+  letter-spacing: 0.025rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 1200px) {
+  .sign-up__img {
+    height: 17.5em;
+    margin-inline: 4em;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .sign-up__img {
+    height: 14em;
+    margin-inline: 3em;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sign-up__img {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .register__form-list .MuiInputBase-root {
+    width: 17rem;
+  }
+
+  .form-item__name .MuiInputBase-root {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .register__form-list .MuiInputBase-root {
+    width: 16rem;
+  }
+
+  .sign-up__auth {
+    padding: 0.25rem 1rem 0;
+  }
+
+  .form-item__name .MuiInputBase-root {
+    width: 100%;
+  }
 }

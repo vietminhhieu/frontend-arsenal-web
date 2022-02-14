@@ -1,0 +1,28 @@
+@import "../../../sass/variable";
+
+.modal-content {
+  width: 35rem;
+  border-radius: 1rem;
+  margin: auto;
+  border-color: $white;
+
+  .modal-header {
+    .modal-title {
+      display: flex;
+    }
+    h3 {
+      margin: 0 0 0 1rem;
+      padding-block: 0.25rem;
+    }
+  }
+
+  // .modal-body {
+  // }
+
+  .modal-footer {
+    .btn-primary {
+      background-color: $main-color;
+      border-color: $main-color;
+    }
+  }
+}

@@ -1,15 +1,15 @@
 import { Button, makeStyles, TextField } from "@material-ui/core";
-import { MailOutline } from "@material-ui/icons";
 import { Formik } from "formik";
-import React from "react";
-import { useHistory } from "react-router-dom";
-import routerName from "../../../Router/RouterName";
+import React, { useState } from "react";
 import "./PWRecovery.css";
 import * as Yup from "yup";
+import { axiosServices } from "../../../services/axiosServices";
+import ResultModal from "../components/ResultModal";
+import PWRecoveryHeader from "./components/PWRecoveryHeader";
 
 const styleTextField = {
   width: "60%",
-  marginTop: "4rem",
+  marginTop: "1rem",
 };
 
 const useStyleTextField = makeStyles(() => ({
@@ -22,102 +22,72 @@ const useStyleTextField = makeStyles(() => ({
   },
 }));
 
+let res = "";
 function PWRecovery() {
   //Sử dụng useHistory xử lý để khi click vào button không reload lại trang
-  let history = useHistory();
-  const handleButtonClick = (location) => {
-    history.push(location);
-  };
 
   const classesTF = useStyleTextField();
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [isError, setIsError] = useState(true);
+
+  async function getDataForm(email) {
+    try {
+      setIsLoading(true);
+      const response = await axiosServices.forgetPW_unConfirm(email);
+      // console.log("response", response.message);
+      res = response?.message;
+      setIsError(true);
+    } catch (error) {
+      // console.log("error", error.response.data.message);
+      res = error.response?.data?.message;
+      setIsError(false);
+    } finally {
+      setIsLoading(false);
+      setModalShow(true);
+    }
+  }
+
   return (
     <div className="pw-recovery">
-      <header>
-        <div className="left-header">
-          <img
-            className="arsenal-logo"
-            src="./image/authentication/logo.svg"
-            alt="Arsenal Logo"
-          />
-
-          <Button
-            onClick={() => handleButtonClick(routerName.HOME)}
-            variant="contained"
-            style={{
-              textTransform: "initial",
-              backgroundColor: "#fff",
-              padding: "0 10px",
-            }}
-          >
-            Home
-          </Button>
-        </div>
-
-        <div className="right-header">
-          <Button
-            onClick={() => handleButtonClick(routerName.SIGN_UP)}
-            variant="contained"
-            color="secondary"
-            style={{
-              textTransform: "initial",
-              padding: "2px 10px",
-            }}
-          >
-            Create Account
-          </Button>
-
-          <Button
-            onClick={() => handleButtonClick(routerName.SIGN_IN)}
-            variant="contained"
-            style={{
-              textTransform: "initial",
-              backgroundColor: "#fff",
-              padding: "2px 10px",
-              marginLeft: "1rem",
-            }}
-          >
-            Login
-          </Button>
-        </div>
-      </header>
+      <PWRecoveryHeader />
 
       <div className="pw-recovery__contents">
-        <h2 className="content__title">Account Recovery</h2>
+        <h2 className="content__title">Khôi phục tài khoản</h2>
         <img
           className="content__img"
           src="./image/authentication/forgotPassword.svg"
           alt="Password Recovery"
         />
-        <h1 className="content__info">Arsenal Account Email Address:</h1>
+        <h1 className="content__info">
+          Gửi đến địa chỉ email của Hiếu Viết Store:{" "}
+        </h1>
         <h3 className="content__desc">
-          Please enter the email address of the account you wish to recover. If
-          you cannot remember it, please leave the field blank.
+          Hãy nhập địa chỉ email của tài khoản mà bạn muốn khôi phục
         </h3>
-
         <Formik
           initialValues={{ email: "" }}
           validationSchema={Yup.object({
             email: Yup.string()
-              .required("Required")
-              .email("Invalid email address"),
+              .required("Bắt buộc")
+              .email("Không tồn tài địa chỉ email"),
           })}
-          onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
+          onSubmit={(values) => {
+            getDataForm(values);
           }}
         >
           {(formik) => (
             <form onSubmit={formik.handleSubmit}>
               <div className="email__input">
-                <MailOutline
+                {/* <MailOutline
                   style={{ position: "absolute", left: "128px", bottom: "5px" }}
-                />
+                /> */}
+
                 <TextField
+                  id="text-field"
                   color="secondary"
-                  label="Your email"
+                  label="Email"
                   className={classesTF.root}
                   style={styleTextField}
                   type="email"
@@ -138,12 +108,19 @@ function PWRecovery() {
                   textTransform: "initial",
                 }}
                 type="submit"
+                disabled={isLoading}
               >
-                Start
+                {isLoading ? "Loading..." : "Bắt đầu"}
               </Button>
             </form>
           )}
         </Formik>
+        <ResultModal
+          show={modalShow}
+          onHide={setModalShow}
+          result={res}
+          isError={isError}
+        />
       </div>
     </div>
   );

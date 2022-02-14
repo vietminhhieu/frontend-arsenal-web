@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Home.scss";
-import { Container, Col, Row, Carousel } from "react-bootstrap";
 import SubHeader from "../../components/Header/SubHeader/SubHeader";
 import MainHeader from "../../components/Header/MainHeader/MainHeader";
 import Footer from "../../components/Footer/Footer";
-import {
-  productArr,
-  carouselArr,
-  storeInfoTop,
-  storeInfoBottom,
-} from "./Constant";
+import { Slider } from "./components/Slider";
+import StoreInfo from "./components/StoreInfo";
+import BusinessImg from "./components/BusinessImg";
+import MainProduct from "./components/MainProduct";
+import { AxiosClient } from "../../services/API/axiosConnection";
+import localApiName from "../../services/API/axiosEndPoint";
 
 export const Home = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function fetchProductApi() {
+      const { data } = await AxiosClient.get(localApiName.apiProduct);
+      setProducts(data);
+    }
+
+    fetchProductApi();
+  }, []);
+
   return (
     <>
       {/* SUB-NAVIGATION */}
@@ -21,61 +31,16 @@ export const Home = () => {
       <MainHeader />
 
       {/* CAROUSEL */}
-      <Carousel className=" w-100 " variant="dark">
-        {carouselArr?.map((carousel, index) => (
-          <Carousel.Item key={index}>
-            <img
-              className="d-block w-100"
-              src={carousel.imgSource}
-              alt={carousel.name}
-            />
-          </Carousel.Item>
-        ))}
-      </Carousel>
+      <Slider />
 
       {/* MAIN-PRODUCT */}
-      <Container fluid>
-        <Row className="main__product">
-          {productArr?.map((product, index) => (
-            <Col sm={12} md={6} xl={4} key={index}>
-              <div className="main__product-img">
-                <img src={product.imgSource} alt="" width="100%" />
-                <h4>{product.name}</h4>
-              </div>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <MainProduct products={products} />
 
       {/* BUSINESS-IMG */}
-      <div className="business__img">
-        <img
-          src="https://res.cloudinary.com/duitozhul/image/upload/v1640143846/Smartphone_Web_Frontend/StoreInfo/BusinessImg/BusinessImg.png"
-          alt=""
-        />
-      </div>
+      <BusinessImg />
 
       {/* STORE-INFO */}
-      <Container fluid className="store__info">
-        <h2 className="text-center">Yêu Smartphone, đến Hiếu Viết Store</h2>
-        <Row className="store__info-top">
-          {storeInfoTop?.map((item, index) => (
-            <Col sm={12} lg={6} key={index}>
-              <img src={item.imgSource} alt="" width="100%" />
-              <h4>{item.h4}</h4>
-            </Col>
-          ))}
-        </Row>
-        <Row className="store__info-bottom">
-          {storeInfoBottom?.map((item, index) => (
-            <Col sm={12} md={6} xl={4} key={index}>
-              <img src={item.imgSource} alt="" width="15%" />
-              <h4>{item.h4}</h4>
-              <h6>{item.h6}</h6>
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <StoreInfo />
 
       {/* FOOTER */}
       <Footer />

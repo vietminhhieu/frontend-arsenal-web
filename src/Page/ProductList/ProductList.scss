@@ -7,6 +7,8 @@
 }
 
 .main__product.row {
+  padding: 2.5rem 1rem 2rem;
+
   .col-xl-4.col-md-6.col-sm-12 {
     .main__product-img {
       .product-info {
@@ -19,6 +21,7 @@
         h3 {
           font-size: 1.5rem;
           font-weight: 600;
+          padding-inline: 1rem;
         }
         .product-price {
           justify-content: center;

@@ -1,4 +1,4 @@
-@import "../../../sass/variable.scss";
+@import "../../../sass/variable";
 
 * {
   margin: 0;
@@ -15,7 +15,7 @@
     margin-left: 0.5rem;
 
     .img1 {
-      width: 2.5rem;
+      width: 3rem;
     }
 
     .img2 {
@@ -53,8 +53,9 @@
 
       .nav-link {
         color: $white;
-        font-size: 1em;
+        font-size: 1.125em;
         padding-inline: 0.8em;
+        font-weight: 500;
       }
 
       .nav-link:hover {
@@ -71,20 +72,97 @@
       }
 
       .nav-link.search {
-        padding: 0.177em 0.5em;
+        height: 2rem;
         color: $black2;
         background-color: $gray1;
+        margin-right: 1rem;
+
+        .MuiSvgIcon-root {
+          margin-top: -0.75rem;
+          height: 2rem;
+        }
       }
     }
-    .nav-link.cart {
-      color: $white;
-      display: flex;
-      align-items: center;
-      // display: none;
 
-      .MuiSvgIcon-root {
-        font-size: 1.75rem;
+    .last-icon {
+      .nav-link.icon {
+        color: $white;
+        display: flex;
         align-items: center;
+        // display: none;
+
+        .MuiSvgIcon-root {
+          font-size: 2.15rem;
+          align-items: center;
+        }
+      }
+
+      .no-login_dropdown {
+        //khi drop show hiển thi xuống sang bên phải
+        .dropdown-menu[data-bs-popper] {
+          right: 0;
+          left: auto; //reset property
+        }
+
+        .MuiSvgIcon-root {
+          color: $white;
+          font-size: 2.25rem;
+        }
+
+        .dropdown-toggle::after {
+          color: $white;
+        }
+
+        .dropdown-menu.show {
+          a:active {
+            background-color: $main-color;
+          }
+        }
+      }
+
+      .login-success_dropdown {
+        //khi drop show hiển thi xuống sang bên phải
+        .dropdown-menu[data-bs-popper] {
+          right: 0;
+          left: auto; //reset property
+        }
+
+        .login-success_icon {
+          width: 1.875rem;
+          border-radius: 50%;
+          padding-block: 0.1875rem;
+        }
+
+        .dropdown-toggle::after {
+          color: $white;
+        }
+
+        .dropdown-menu.show {
+          a:active {
+            background-color: $main-color;
+          }
+
+          .dropdown-item.disabled {
+            img {
+              width: 2.675rem;
+              height: 2.675rem;
+              margin-right: 0.75rem;
+              border-radius: 50%;
+            }
+
+            h5 {
+              font-size: 1rem;
+              color: $black;
+              letter-spacing: 0.025rem;
+            }
+
+            h6 {
+              font-size: 0.8rem;
+              font-weight: light;
+              color: $black3;
+            }
+          }
+        }
       }
     }
   }
@@ -133,18 +211,17 @@
         }
       }
 
-      form {
-        .form-control {
-        }
+      // form {
+      //   .form-control {
+      //   }
 
-        .nav-link.search {
-        }
-      }
-      .nav-link.cart {
-        .MuiSvgIcon-root {
-          color: red;
-        }
-      }
+      //   .nav-link.search {
+      //   }
+      // }
+      // .nav-link.icon {
+      //   .MuiSvgIcon-root {
+      //   }
+      // }
     }
   }
 }

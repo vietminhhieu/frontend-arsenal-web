@@ -1,0 +1,16 @@
+@import "../../../../sass/variable";
+
+.sign_up-contents {
+  padding: 0 30px;
+  width: 680px;
+  margin: 2rem auto;
+  background-color: white;
+  color: #333333;
+  border-radius: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .sign_up-contents {
+    width: 90% !important;
+  }
+}

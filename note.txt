@@ -1,3 +1,5 @@
-1. Chưa responsive được sub-navigation và main-navigation
-2. Chưa responsive 2 mũi tên trái phải
-3. useParam, useHistory, useLocation
+1. Chưa responsive đc textfield ở PWRecovery.jsx 
+(đường thẳng ở dưới chữ Email) khi ở width 768px thì width = 100%
+2. Chưa responsive đc formcontrol ở NewPW.jsx 
+(đường thẳng ở dưới chữ Mật khẩu) khi ở width 768px thì width = 100%
+3. Sửa lỗi render ở NewPW.jsx khi tạo mới mật khẩu thành công

@@ -18,6 +18,7 @@ const Footer = () => {
               </li>
               <li>Địa chỉ: Số 69 Phú Diễn, Bắc Từ Liêm, Hà Nội</li>
               <li>Hotline: 0964 819 769</li>
+              <li>Fanpage: Hiếu Viết Store</li>
               <li>Email: hieuvietstore@gmail.com</li>
             </ul>
           </Col>

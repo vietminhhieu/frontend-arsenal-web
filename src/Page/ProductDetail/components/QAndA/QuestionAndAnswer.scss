@@ -1,0 +1,78 @@
+@import "../../../../sass/variable";
+
+.qa {
+  text-align: left;
+  padding: 1rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.3);
+  margin: 1rem 0 2rem;
+  border-radius: 0.75rem;
+
+  .qa_form {
+    label {
+      font-weight: bold;
+      font-size: 1.125rem;
+    }
+
+    button {
+      float: right;
+    }
+  }
+
+  .qa_info {
+    font-size: 0.875rem;
+    padding-right: 1.5rem;
+
+    .qa_info-item {
+      margin-block: 1rem;
+
+      img {
+        border-radius: 50%;
+        margin-right: 1.25rem;
+      }
+
+      .main-content {
+        padding-left: 0rem;
+        width: 100%;
+
+        .first-line {
+          justify-content: space-between;
+          .customer-name {
+            font-weight: bold;
+          }
+
+          .submitted-time {
+          }
+        }
+
+        .second-line {
+          background-color: $gray2;
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          margin-top: 0.25rem;
+          text-align: justify;
+
+          .qa-content {
+            font-weight: normal;
+            margin-left: 0.25rem;
+
+            .answer-btn {
+              color: $main-color;
+              text-align: right;
+              cursor: pointer;
+
+              .MuiSvgIcon-root {
+                width: 0.75rem;
+                margin-right: 0.25rem;
+              }
+
+              span {
+                font-weight: bold;
+                font-size: 1rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

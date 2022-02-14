@@ -1,9 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./MainHeader.scss";
-import { Container, Navbar, Nav, Form, FormControl } from "react-bootstrap";
-import { Search, LocalMallOutlined } from "@material-ui/icons";
+import {
+  Container,
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  NavDropdown,
+} from "react-bootstrap";
+import {
+  Search,
+  LocalMallOutlined,
+  AccountCircleOutlined,
+} from "@material-ui/icons";
+import { AxiosClient } from "../../../services/API/axiosConnection";
+import localApiName from "../../../services/API/axiosEndPoint";
+import { useHistory } from "react-router-dom";
+import routerName from "../../../Router/RouterName";
 
 const MainHeader = () => {
+  const [categoryName, setCategoryName] = useState([]);
+
+  let history = useHistory();
+
+  useEffect(() => {
+    const fetchApiCategory = async () => {
+      const { data } = await AxiosClient.get(localApiName.apiCategory);
+      setCategoryName(data);
+    };
+
+    fetchApiCategory();
+  }, []);
+
+  //Lấy login token từ localStorage
+  let loginTokenInLocalStorage = localStorage.getItem("login-token");
+  // console.log("loginTokenInLocalStorage", loginTokenInLocalStorage);
+
+  //Lấy user data từ localStorage
+  let userDataInLocalStorage = JSON.parse(localStorage.getItem("user-data"));
+  // console.log("userDataInLocalStorage", userDataInLocalStorage);
+  let firstName = "",
+    lastName = "",
+    email = "";
+  if (localStorage.getItem("user-data")) {
+    firstName = userDataInLocalStorage.firstName;
+    lastName = userDataInLocalStorage.lastName;
+    email = userDataInLocalStorage.email;
+  }
+  // console.log("firstName", firstName);
+  // console.log("lastName", lastName);
+  // console.log("email", email);
+
+  const handleLogoutClick = () => {
+    localStorage.removeItem("login-token");
+    localStorage.removeItem("user-data");
+    // trở về trang chủ
+    history.push(routerName.HOME);
+  };
+
   return (
     <Navbar
       collapseOnSelect
@@ -16,45 +70,27 @@ const MainHeader = () => {
         <Navbar.Brand href="/">
           <img
             src="https://res.cloudinary.com/duitozhul/image/upload/v1639843039/Smartphone_Web_Frontend/Logo/logo-rectangle.jpg"
-            alt=""
+            alt="Logo 1"
             className="img1"
           />
           <img
             src="https://res.cloudinary.com/duitozhul/image/upload/v1639843038/Smartphone_Web_Frontend/Logo/logo-mobile2.jpg"
-            alt=""
+            alt="Logo 2"
             className="img2"
           />
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {/* <NavDropdown
-              title="Apple"
-              id="collasible-nav-dropdown"
-              onMouseEnter={() => setOnHover(true)}
-            >
-              <NavDropdown.Item href="#iPhone 13">
-                iPhone 13 Series
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#iPhone 12">
-                iPhone 12 Series
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#iPhone 11">
-                iPhone 11 Series
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#iPhone X/XR">
-                iPhone X/XR
-              </NavDropdown.Item>
-            </NavDropdown> */}
-            <Nav.Link href="/product-list/iphone">iPhone</Nav.Link>
-            <Nav.Link href="/product-list/samsung">Samsung</Nav.Link>
-            <Nav.Link href="/product-list/xiaomi">Xiaomi</Nav.Link>
-            <Nav.Link href="/product-list/oppo">OPPO</Nav.Link>
-            <Nav.Link href="/product-list/realmi">Realmi</Nav.Link>
-            <Nav.Link href="/product-list/vsmart">Vsmart</Nav.Link>
-            <Nav.Link href="/product-list/asus">ASUS</Nav.Link>
-            <Nav.Link href="/product-list/vivo">Vivo</Nav.Link>
-            <Nav.Link href="/product-list/oneplus">OnePlus</Nav.Link>
+            {categoryName.map((item, index) => {
+              const linkHref = "/product-list/" + item.name.toLowerCase();
+              return (
+                <Nav.Link key={index} href={linkHref}>
+                  {item.name}
+                </Nav.Link>
+              );
+            })}
           </Nav>
           <Form className="d-flex">
             <FormControl
@@ -66,9 +102,60 @@ const MainHeader = () => {
               <Search />
             </Nav.Link>
           </Form>
-          <Nav.Link href="/cart" className="cart">
-            <LocalMallOutlined />
-          </Nav.Link>
+          <Form
+            className="last-icon d-flex"
+            style={{ justifyContent: "flex-end" }}
+          >
+            <Nav.Link href="/cart" className="icon cart">
+              <LocalMallOutlined />
+            </Nav.Link>
+
+            {/* Kiểm tra xem đã đăng nhập chưa  */}
+            {loginTokenInLocalStorage ? (
+              <NavDropdown
+                title={
+                  <img
+                    src="https://www.ihep.org/wp-content/themes/ihep-theme/assets/images/user-profile.jpg"
+                    alt="User Avatar"
+                    className="login-success_icon"
+                  />
+                }
+                id="navbarScrollingDropdown"
+                className="login-success_dropdown"
+              >
+                <NavDropdown.Item disabled href="#" className="d-flex">
+                  <img
+                    src="https://www.ihep.org/wp-content/themes/ihep-theme/assets/images/user-profile.jpg"
+                    alt="User Avatar"
+                  />
+                  <div>
+                    <h5>{"Xin chào, " + firstName + " " + lastName}</h5>
+                    <h6>{email}</h6>
+                  </div>
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#">
+                  Thiết lập trạng thái
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/user/information">
+                  Sửa thông tin cá nhân
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item href="#" onClick={handleLogoutClick}>
+                  Đăng xuất
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <NavDropdown
+                title={<AccountCircleOutlined />}
+                id="navbarScrollingDropdown"
+                className="no-login_dropdown"
+              >
+                <NavDropdown.Item href="/sign-up">Đăng ký</NavDropdown.Item>
+                <NavDropdown.Item href="/login">Đăng nhập</NavDropdown.Item>
+              </NavDropdown>
+            )}
+          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>

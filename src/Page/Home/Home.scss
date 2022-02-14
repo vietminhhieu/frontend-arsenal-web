@@ -39,11 +39,11 @@
     }
 
     :not(.active):hover {
-      background-color: $black2;
+      background-color: $main-color;
     }
 
     .active {
-      background-color: $main-color;
+      background-color: $black2;
     }
   }
 

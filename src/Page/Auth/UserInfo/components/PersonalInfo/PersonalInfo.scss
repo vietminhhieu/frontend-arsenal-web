@@ -1,0 +1,23 @@
+@import "../../../../../sass/variable";
+
+.personal-info_form {
+  .pi-label {
+    text-align: left;
+  }
+
+  .pi-radio {
+    text-align: left;
+
+    input {
+      margin-right: 0.25rem;
+    }
+
+    span {
+      margin-right: 0.75rem;
+    }
+  }
+
+  Button {
+    float: right;
+  }
+}
