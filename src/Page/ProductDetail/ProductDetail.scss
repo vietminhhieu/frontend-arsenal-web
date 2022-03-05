@@ -184,6 +184,10 @@
       font-weight: bolder;
       cursor: pointer;
     }
+
+    .tab-item.active {
+      border-block-start: 2px solid $black;
+    }
   }
 
   hr {

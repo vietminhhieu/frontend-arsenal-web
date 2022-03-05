@@ -1,0 +1,16 @@
+@import "../../../sass/variable";
+
+.checkout-success-first {
+  background-color: $gray2;
+  margin: 0;
+
+  .col-6 {
+    text-align: center;
+  }
+}
+
+.checkout-success {
+  .right-col {
+    text-align: right;
+  }
+}

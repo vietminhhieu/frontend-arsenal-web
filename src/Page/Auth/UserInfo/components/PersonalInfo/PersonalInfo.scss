@@ -1,6 +1,9 @@
 @import "../../../../../sass/variable";
 
 .personal-info_form {
+  border: 1px solid $gray2;
+  padding: 2rem 2rem 5rem;
+  border-radius: 1rem;
   .pi-label {
     text-align: left;
   }
@@ -15,9 +18,20 @@
     span {
       margin-right: 0.75rem;
     }
+
+    .form-check-input:checked {
+      background-color: $main-color;
+      border-color: $main-color;
+    }
   }
 
   Button {
     float: right;
+  }
+
+  .btn-primary {
+    color: #fff;
+    background-color: $main-color;
+    border-color: $main-color;
   }
 }

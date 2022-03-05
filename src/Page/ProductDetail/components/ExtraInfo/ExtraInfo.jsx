@@ -91,22 +91,22 @@ const handleNewLine = (value) => {
   if (value.includes(" / ")) {
     let finalValue;
     const newValue = value.split(" / ");
-    {
-      finalValue = newValue.map((val, index) => {
-        return (
-          <div key={index}>
-            {val}
-            <br />
-          </div>
-        );
-      });
-    }
+
+    finalValue = newValue.map((val, index) => {
+      return (
+        <div key={index}>
+          {val}
+          <br />
+        </div>
+      );
+    });
+
     return finalValue;
   }
   return value;
 };
 
-const ExtraInfo = ({ idProduct }) => {
+const ExtraInfo = ({ idProduct, loadingPage }) => {
   const [extraInfo, setExtraInfo] = useState([]);
 
   async function fetchExtraInfoApi() {

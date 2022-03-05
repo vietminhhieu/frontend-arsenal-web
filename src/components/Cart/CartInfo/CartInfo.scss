@@ -1,0 +1,238 @@
+@import "../.../../../../sass/variable";
+
+.product-name-checkout {
+  color: $black2 !important;
+  font-weight: 500;
+}
+
+.empty-cart {
+  img {
+    width: 17.5rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  h4 {
+    margin-bottom: 5rem;
+    font-size: 1.25em;
+  }
+}
+
+.cart-title {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  padding-top: 4rem;
+  padding-bottom: 0.5rem;
+}
+
+.cart-table {
+  border: 1px solid $gray1;
+  font-size: 0.875rem;
+
+  thead {
+    text-align: left;
+
+    background-color: $gray2;
+
+    th {
+      color: $black3;
+      padding-inline: 1rem;
+    }
+  }
+
+  tbody {
+    td {
+      padding-inline: 1rem;
+      text-align: left;
+      vertical-align: middle;
+      color: $black3;
+      font-weight: bolder;
+    }
+
+    .product-thumbnail {
+      padding-inline: 2rem;
+
+      img {
+        width: 4rem;
+      }
+    }
+
+    .product-name {
+      a {
+        color: $black2;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      h6 {
+        margin-bottom: 0.25rem;
+        font-size: 1em;
+        font-weight: 600;
+        color: $black3;
+      }
+    }
+
+    .product-price,
+    .product-subtotal {
+      min-width: 8rem;
+    }
+
+    td input {
+      width: 3rem;
+    }
+
+    .product-remove {
+      color: $black4;
+
+      :hover {
+        color: $black2;
+      }
+    }
+  }
+}
+
+.update-cart-btn {
+  border: 1px solid $gray1;
+  border-top-color: $white;
+  margin-top: -1rem;
+  text-align: right;
+  .update-cart {
+    background-color: $black2;
+    font-weight: bold;
+    font-size: 0.875em;
+    margin: 0.5rem;
+    padding: 0.5em 2em;
+    min-width: 12rem;
+    border-radius: 2em;
+  }
+  .update-cart:hover {
+    background-color: $main-color;
+    border-color: $main-color;
+  }
+}
+
+.cart-total-row {
+  --bs-gutter-x: 0rem;
+  margin-top: 1.5rem;
+  margin-bottom: 5rem;
+
+  .cart-total {
+    border: 1px solid $gray1;
+    padding: 0;
+
+    h6 {
+      border-bottom: 1px solid $gray1;
+      background-color: $gray2;
+      padding: 1em 2em;
+      color: $black3;
+      font-weight: 600;
+    }
+
+    .total-detail {
+      padding: 1em 1.25em 0.75em;
+      border-bottom: 1px solid $gray1;
+      --bs-gutter-x: -4rem;
+
+      .col-5 {
+        text-align: left;
+        font-weight: bolder;
+        color: $black2;
+      }
+      .col-7 {
+        text-align: right;
+        font-weight: bolder;
+        color: $black2;
+      }
+    }
+
+    .make-payment-btn {
+      padding: 1.5em 2em 1em;
+
+      .make-payment {
+        background-color: $black2;
+        font-weight: bold;
+        font-size: 0.9em;
+        padding: 0.5em 2em;
+        border-radius: 2em;
+        width: 100%;
+      }
+
+      .make-payment:hover {
+        background-color: $main-color;
+        border-color: $main-color;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $breakpoints-lg) {
+  .cart-table {
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    tr,
+    td {
+      padding-inline: 0.5rem;
+    }
+
+    tr {
+      border: 1px solid #ccc;
+    }
+
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 50%;
+    }
+
+    td:before {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tbody {
+      td {
+        text-align: right;
+      }
+    }
+
+    .col-unnecessary {
+      display: none;
+    }
+
+    td:nth-of-type(1):before {
+      content: "";
+    }
+    td:nth-of-type(2):before {
+      content: "Sản phẩm: ";
+    }
+    td:nth-of-type(3):before {
+      content: "Giá:";
+    }
+    td:nth-of-type(4):before {
+      content: "Số lượng: ";
+    }
+    td:nth-of-type(5):before {
+      content: "Tạm tính: ";
+    }
+    td:nth-of-type(6):before {
+      content: "";
+    }
+  }
+}

@@ -1,41 +1,23 @@
-import React from "react";
-import { Container, Col } from "react-bootstrap";
-import "./Test.scss";
-import {
-  HomeOutlined,
-  History,
-  AccountCircleOutlined,
-  BuildOutlined,
-  ExitToAppOutlined,
-} from "@material-ui/icons";
+import React, { useState, useEffect } from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const Test = () => {
+const Loading = () => {
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
+
   return (
-    <Container fluid>
-      <Col xs={2}>
-        <ul className="block-menu">
-          <li className="block-menu__item">
-            <HomeOutlined />
-            <span>Trang chủ</span>
-          </li>
-          <li className="block-menu__item">
-            <History />
-            <span>Lịch sử mua hàng</span>
-          </li>
-          <li className="block-menu__item">
-            <AccountCircleOutlined /> <span>Thông tin cá nhân</span>
-          </li>
-          <li className="block-menu__item">
-            <BuildOutlined /> <span>Thay đổi mật khẩu</span>
-          </li>
-          <li className="block-menu__item">
-            <ExitToAppOutlined /> <span>Đăng xuất</span>
-          </li>
-        </ul>
-      </Col>
-      <Col xs={10}></Col>
-    </Container>
+    <div>
+      {loading ? (
+        <ClipLoader color={"#F50057"} loading={loading} size={150} />
+      ) : (
+        <h2>Home Page</h2>
+      )}
+    </div>
   );
 };
 
-export default Test;
+export default Loading;

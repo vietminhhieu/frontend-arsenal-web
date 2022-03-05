@@ -45,20 +45,15 @@ const useStyleTextField = makeStyles(() => ({
 }));
 
 let res = "";
-const SignUpMain = ({
-  isLoading,
-  setIsLoading,
-  showPassword,
-  setShowPassword,
-}) => {
+const SignUpMain = ({ isLoading, setIsLoading }) => {
   const [modalShow, setModalShow] = useState(false);
   const [isError, setIsError] = useState(true);
+  const [showPassword, setShowPassword] = useState({
+    pass: false,
+    retypePass: false,
+  });
 
   const classesTF = useStyleTextField();
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -213,7 +208,7 @@ const SignUpMain = ({
                   Mật khẩu
                 </InputLabel>
                 <Input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword.pass ? "text" : "password"}
                   name="password"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -225,18 +220,20 @@ const SignUpMain = ({
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
+                        onClick={() =>
+                          setShowPassword({
+                            ...showPassword,
+                            pass: !showPassword.pass,
+                          })
+                        }
                         onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword.pass ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
                   }
                 />
-
-                {/* for some reason Mui input component doesnt support helpertext so we need to create new element */}
-                {/* if you really want to use the helpertext read document on FormHelperText config with defaultProps as in browser */}
                 {formik.touched.password && (
                   <span className="error-text">{formik.errors.password}</span>
                 )}
@@ -258,7 +255,7 @@ const SignUpMain = ({
                   Nhập lại mật khẩu
                 </InputLabel>
                 <Input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword.retypePass ? "text" : "password"}
                   name="retypePassword"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -271,16 +268,24 @@ const SignUpMain = ({
                     <InputAdornment position="end">
                       <IconButton
                         aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
+                        onClick={() =>
+                          setShowPassword({
+                            ...showPassword,
+                            retypePass: !showPassword.retypePass,
+                          })
+                        }
                         onMouseDown={handleMouseDownPassword}
                         edge="end"
                       >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                        {showPassword.retypePass ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   }
                 />
-
                 {/* show helperText */}
                 {formik.touched.retypePassword && (
                   <span className="error-text">

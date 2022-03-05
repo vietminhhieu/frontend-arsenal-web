@@ -10,7 +10,7 @@ import {
   FormControlLabel,
   Checkbox,
 } from "@material-ui/core";
-import { ArrowRightAlt, Visibility, VisibilityOff } from "@material-ui/icons";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import routerName from "../../../../Router/RouterName";
 import { makeStyles } from "@material-ui/styles";
@@ -87,7 +87,7 @@ const SignInMain = ({
         JSON.stringify(tokenWhenLoginSuccess)
       );
       // console.log("response.data.user", response.data.user);
-      const userDataWhenLoginSuccess = response.data.user;
+      const userDataWhenLoginSuccess = response?.data?.user;
       localStorage.setItem(
         "user-data",
         JSON.stringify(userDataWhenLoginSuccess)
@@ -98,8 +98,8 @@ const SignInMain = ({
       // console.log("error.response.data.message: ", error.response?.data?.message);
       // console.log('error.response.data.success: ', error.response.data.success)
       res = setMessageReturn(
-        error.response.data.message,
-        error.response.data.success
+        error.response?.data?.message,
+        error.response?.data?.success
       );
       setIsError(false);
     } finally {

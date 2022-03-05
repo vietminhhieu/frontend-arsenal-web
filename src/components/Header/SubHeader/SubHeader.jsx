@@ -14,7 +14,7 @@ const SubHeader = () => {
       <Container fluid>
         <Navbar.Brand href="/">
           <h3> Hiếu Viết Store</h3>
-          <h6>Uy tín - Chất lượng - Chính hãng</h6>
+          <h6 className="slogan-store">Uy tín - Chất lượng - Chính hãng</h6>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -22,7 +22,7 @@ const SubHeader = () => {
           <Nav>
             <Nav.Link href="/contact">
               <Call />
-              <span>0964819769</span>
+              <span>0964 819 769</span>
             </Nav.Link>
             <Nav.Link href="/address">
               <LocationOn />

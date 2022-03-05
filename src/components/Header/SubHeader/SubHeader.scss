@@ -14,15 +14,16 @@
     padding-left: 1rem;
 
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: bold;
       letter-spacing: 0.025em;
+      padding-top: 0.25em;
+      font-family: serif;
     }
 
-    h6 {
+    .slogan-store {
       font-size: 1rem;
-      font-weight: 500;
     }
   }
 
@@ -38,6 +39,10 @@
     .MuiSvgIcon-root {
       margin-bottom: 0.5rem;
       margin-right: 0.125rem;
+    }
+
+    span {
+      letter-spacing: 0.025rem;
     }
 
     // .cart .MuiSvgIcon-root {

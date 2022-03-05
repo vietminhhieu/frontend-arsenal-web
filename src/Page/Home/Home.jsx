@@ -9,14 +9,17 @@ import BusinessImg from "./components/BusinessImg";
 import MainProduct from "./components/MainProduct";
 import { AxiosClient } from "../../services/API/axiosConnection";
 import localApiName from "../../services/API/axiosEndPoint";
+import LoadingPageComponent from "../../components/Loading/LoadingPage";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
+  const [loadingPage, setLoadingPage] = useState(true);
 
   useEffect(() => {
     async function fetchProductApi() {
       const { data } = await AxiosClient.get(localApiName.apiProduct);
       setProducts(data);
+      setLoadingPage(false);
     }
 
     fetchProductApi();
@@ -34,7 +37,11 @@ export const Home = () => {
       <Slider />
 
       {/* MAIN-PRODUCT */}
-      <MainProduct products={products} />
+      {loadingPage ? (
+        <LoadingPageComponent loading={loadingPage} />
+      ) : (
+        <MainProduct products={products} />
+      )}
 
       {/* BUSINESS-IMG */}
       <BusinessImg />

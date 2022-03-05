@@ -2,14 +2,28 @@ import React from "react";
 import ImageGallery from "react-image-gallery";
 import { Tooltip } from "@material-ui/core";
 import { Container, Col, Row, Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../../redux-toolkit/features/Cart/CartSlice";
+import { useHistory } from "react-router-dom";
+import routerName from "../../../../Router/RouterName";
 
 const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
+  const loginTokenInLocalStorage = JSON.parse(
+    localStorage.getItem("login-token")
+  );
+
+  const history = useHistory();
+
   const handleChangeQuantity = (e) => {
     setInputs({ ...inputs, ["quantity"]: e.target.value });
   };
 
   const handleSetInput = (key, value) => {
     setInputs({ ...inputs, [key]: value });
+  };
+
+  const handleSetCapacityInput = (key1, value1, key2, value2) => {
+    setInputs({ ...inputs, [key1]: value1, [key2]: value2 });
   };
 
   const handleColor = (productItem) => {
@@ -35,6 +49,32 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
     }
   });
 
+  const dispatch = useDispatch();
+
+  const handleOnClickAddToCart = (
+    productId,
+    productThumbnail,
+    productName,
+    productColor,
+    productCapacity,
+    productQuantity,
+    productPrice
+  ) => {
+    loginTokenInLocalStorage
+      ? dispatch(
+          addToCart({
+            productId,
+            productThumbnail,
+            productName,
+            productColor,
+            productCapacity,
+            productQuantity,
+            productPrice,
+          })
+        )
+      : history.push(routerName.LOGIN);
+  };
+
   return (
     <Container fluid>
       {products.map((product, index) => {
@@ -51,7 +91,16 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
                   {/* Handle color */}
                   <div className="smartphone_detail-color">
                     <label className="color-title">
-                      Chọn màu : <span>{inputs.color}</span>
+                      {inputs.color ? (
+                        <>
+                          Chọn màu : <span>{inputs.color}</span>
+                        </>
+                      ) : (
+                        <>
+                          Chọn màu :{" "}
+                          <span>{handleColor(product.color[0])}</span>
+                        </>
+                      )}
                     </label>
                     <div className="color-selected d-flex ">
                       {product.color.map((item, colorIndex) => {
@@ -82,7 +131,15 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
                   <div className="smartphone_detail-capacity">
                     {product.capacity.length !== 0 && (
                       <label className="capacity-title">
-                        Chọn Dung lượng : <span>{inputs.capacity}</span>
+                        {inputs.capacity ? (
+                          <>
+                            Chọn Dung lượng : <span>{inputs.capacity}</span>
+                          </>
+                        ) : (
+                          <>
+                            Chọn Dung lượng : <span>{product.capacity[0]}</span>
+                          </>
+                        )}
                       </label>
                     )}
                     <div className="capacity-selected d-flex ">
@@ -96,7 +153,14 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
                           <Button
                             variant="outline-dark"
                             // onClick={() => setInputs({ ...inputs, capacity: item })}
-                            onClick={() => handleSetInput("capacity", item)}
+                            onClick={() =>
+                              handleSetCapacityInput(
+                                "capacity",
+                                item,
+                                "priceIndex",
+                                capacityIndex
+                              )
+                            }
                           >
                             {item}
                           </Button>
@@ -119,7 +183,8 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
                           className="smartphone_detail-price"
                           key={priceIndex}
                         >
-                          {product.price[priceIndex]}
+                          {/* {product.price[priceIndex]} */}
+                          {product.price[inputs.priceIndex]}
                         </div>
                       );
                   })}
@@ -136,7 +201,24 @@ const SmartphoneInfo = ({ id, products, inputs, setInputs }) => {
                       />
                     </div>
                     <div className="payment-method d-flex">
-                      <Button variant="primary add-to-cart">
+                      <Button
+                        variant="dark add-to-cart"
+                        onClick={() =>
+                          handleOnClickAddToCart(
+                            product._id,
+                            product.thumbnail[0],
+                            product.name,
+                            inputs.color
+                              ? inputs.color
+                              : handleColor(product.color[0]),
+                            inputs.capacity
+                              ? inputs.capacity
+                              : product.capacity[0],
+                            Number(inputs.quantity),
+                            product.price[inputs.priceIndex]
+                          )
+                        }
+                      >
                         Thêm vào giỏ hàng
                       </Button>
                       <Button variant="outline-dark amortization">

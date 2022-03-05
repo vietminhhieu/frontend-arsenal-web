@@ -82,6 +82,10 @@
           height: 2rem;
         }
       }
+
+      .nav-link.cart {
+        font-size: 5rem;
+      }
     }
 
     .last-icon {
@@ -90,6 +94,21 @@
         display: flex;
         align-items: center;
         // display: none;
+
+        span {
+          min-width: 1.5em;
+          height: 1.5em;
+          line-height: 1.5em;
+          position: absolute;
+          top: 0.9em;
+          margin-left: 1.5rem;
+          border-radius: 100%;
+          color: $white;
+          background-color: $main-color;
+          text-align: center;
+          font-size: 10px;
+          font-weight: bold;
+        }
 
         .MuiSvgIcon-root {
           font-size: 2.15rem;
@@ -129,8 +148,9 @@
 
         .login-success_icon {
           width: 1.875rem;
+          height: 1.875rem;
+          object-fit: cover;
           border-radius: 50%;
-          padding-block: 0.1875rem;
         }
 
         .dropdown-toggle::after {
@@ -146,18 +166,19 @@
             img {
               width: 2.675rem;
               height: 2.675rem;
+              object-fit: cover;
               margin-right: 0.75rem;
               border-radius: 50%;
             }
 
             h5 {
-              font-size: 1rem;
+              font-size: 1.125rem;
               color: $black;
               letter-spacing: 0.025rem;
             }
 
             h6 {
-              font-size: 0.8rem;
+              font-size: 0.875rem;
               font-weight: light;
               color: $black3;
             }
@@ -218,10 +239,14 @@
       //   .nav-link.search {
       //   }
       // }
-      // .nav-link.icon {
-      //   .MuiSvgIcon-root {
-      //   }
-      // }
+      .last-icon {
+        .nav-link.icon {
+          span {
+            top: auto;
+            bottom: 2.6rem;
+          }
+        }
+      }
     }
   }
 }

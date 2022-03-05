@@ -12,6 +12,7 @@ import QuestionAndAnswer from "./components/QAndA/QuestionAndAnswer";
 import { AxiosClient } from "../../services/API/axiosConnection";
 import localApiName from "../../services/API/axiosEndPoint";
 import SmartphoneInfo from "./components/SmartphoneInfo/SmartphoneInfo";
+import LoadingPageComponent from "../../components/Loading/LoadingPage";
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -20,24 +21,18 @@ export const ProductDetail = () => {
     color: "",
     capacity: "",
     quantity: 1,
+    priceIndex: 0,
   });
   const [render, setRender] = useState("description");
   const [products, setProducts] = useState([]);
   const [feedbacks, setFeedbacks] = useState([]);
   const [comments, setComments] = useState([]);
-
-  // const FetchFromBackEnd = async () => {
-  //   const [p, fb] = await Promise.all([
-  //     AxiosClient.get(localApiName.apiProduct),
-  //     AxiosClient.get(localApiName.apiFeedback),
-  //   ]);
-  //   setProducts(p.data);
-  //   setFeedbacks(fb.data);
-  // };
+  const [loadingPage, setLoadingPage] = useState(true);
 
   async function fetchProductApi() {
     const { data } = await AxiosClient.get(localApiName.apiProduct);
     setProducts(data);
+    setLoadingPage(false);
   }
 
   async function fetchFeedBackApi() {
@@ -49,13 +44,12 @@ export const ProductDetail = () => {
 
   async function fetchCommentApi() {
     const { data } = await AxiosClient.get(localApiName.apiComment);
-    data.map((item, index) => {
+    data.map((item) => {
       if (item.id_product === id) setComments(item);
     });
   }
 
   useEffect(() => {
-    // FetchFromBackEnd();
     fetchProductApi();
     fetchFeedBackApi();
     fetchCommentApi();
@@ -69,40 +63,100 @@ export const ProductDetail = () => {
       {/* MAIN-NAVIGATION */}
       <MainHeader />
 
-      {/* SMARTPHONE-INFO */}
-      <SmartphoneInfo
-        products={products}
-        id={id}
-        inputs={inputs}
-        setInputs={setInputs}
-      />
+      {loadingPage ? (
+        <LoadingPageComponent loading={loadingPage} />
+      ) : (
+        <>
+          {/* SMARTPHONE-INFO */}
+          <SmartphoneInfo
+            products={products}
+            id={id}
+            inputs={inputs}
+            setInputs={setInputs}
+          />
 
-      {/* Information-list */}
-      <Container fluid>
-        <div className="information__list">
-          <ul className="information__list-tabs d-flex">
-            <li className="tab-item" onClick={() => setRender("description")}>
-              Mô tả
-            </li>
-            <li className="tab-item" onClick={() => setRender("extraInfo")}>
-              Thông tin bổ sung
-            </li>
-            <li className="tab-item" onClick={() => setRender("feedback")}>
-              Đánh giá
-            </li>
-            <li className="tab-item" onClick={() => setRender("Q&A")}>
-              Hỏi và đáp
-            </li>
-          </ul>
-          <hr />
-        </div>
-        {render === "description" && (
-          <Description productItem={products} idProduct={id} />
-        )}
-        {render === "extraInfo" && <ExtraInfo idProduct={id} />}
-        {render === "feedback" && <Feedback feedbacks={feedbacks} />}
-        {render === "Q&A" && <QuestionAndAnswer comments={comments} />}
-      </Container>
+          {/* Information-list */}
+          <Container fluid>
+            <div className="information__list">
+              <ul className="information__list-tabs d-flex">
+                {render === "description" ? (
+                  <li
+                    className="tab-item active"
+                    onClick={() => setRender("description")}
+                  >
+                    Mô tả
+                  </li>
+                ) : (
+                  <li
+                    className="tab-item "
+                    onClick={() => setRender("description")}
+                  >
+                    Mô tả
+                  </li>
+                )}
+                {render === "extraInfo" ? (
+                  <li
+                    className="tab-item active"
+                    onClick={() => setRender("extraInfo")}
+                  >
+                    Thông tin bổ sung
+                  </li>
+                ) : (
+                  <li
+                    className="tab-item "
+                    onClick={() => setRender("extraInfo")}
+                  >
+                    Thông tin bổ sung
+                  </li>
+                )}
+                {render === "feedback" ? (
+                  <li
+                    className="tab-item active"
+                    onClick={() => setRender("feedback")}
+                  >
+                    Đánh giá
+                  </li>
+                ) : (
+                  <li
+                    className="tab-item "
+                    onClick={() => setRender("feedback")}
+                  >
+                    Đánh giá
+                  </li>
+                )}
+                {render === "Q&A" ? (
+                  <li
+                    className="tab-item active"
+                    onClick={() => setRender("Q&A")}
+                  >
+                    Hỏi và đáp
+                  </li>
+                ) : (
+                  <li className="tab-item" onClick={() => setRender("Q&A")}>
+                    Hỏi và đáp
+                  </li>
+                )}
+                {/* <li className="tab-item" onClick={() => setRender("extraInfo")}>
+                  Thông tin bổ sung
+                </li>
+                <li className="tab-item" onClick={() => setRender("feedback")}>
+                  Đánh giá
+                </li>
+                <li className="tab-item" onClick={() => setRender("Q&A")}>
+                  Hỏi và đáp
+                </li> */}
+              </ul>
+              <hr />
+            </div>
+            {render === "description" && (
+              <Description productItem={products} idProduct={id} />
+            )}
+            {render === "extraInfo" && <ExtraInfo idProduct={id} />}
+            {render === "feedback" && <Feedback feedbacks={feedbacks} />}
+            {render === "Q&A" && <QuestionAndAnswer comments={comments} />}
+          </Container>
+        </>
+      )}
 
       {/* FOOTER */}
       <Footer />

@@ -1,0 +1,77 @@
+@import "../../../sass/variable";
+
+.checkout {
+  font-size: 0.875rem;
+
+  img {
+    width: 3rem;
+  }
+  a {
+    color: $black2;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  a:hover {
+    color: $main-color;
+  }
+  h5 {
+    color: $black3;
+    font-weight: 600;
+    font-size: 1em;
+    margin-block: 0.25em;
+  }
+
+  .left-col {
+    text-align: left;
+  }
+
+  .right-col {
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .col-6,
+  .col-6 {
+    font-size: 1em;
+    font-weight: bolder;
+    color: $black2;
+    padding: 0.25rem 1rem;
+  }
+
+  .form-check {
+    text-align: left;
+    font-weight: bolder;
+    color: $black2;
+    padding: 0.25rem;
+
+    .form-check-input {
+    }
+
+    .form-check-input:checked {
+      background-color: $main-color;
+      border-color: $main-color;
+    }
+  }
+
+  .arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 0.5rem solid transparent;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.75rem solid #efefef;
+    margin-left: 1.5rem;
+  }
+  .payment-box {
+    background-color: #efefef;
+    padding: 1em;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+
+    p {
+      text-align: left;
+    }
+  }
+}

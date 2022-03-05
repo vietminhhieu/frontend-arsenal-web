@@ -10,26 +10,12 @@ import NewPW from "../Page/Auth/PasswordRecovery/NewPW/NewPW";
 import { ProductList } from "../Page/ProductList/ProductList";
 import { ProductDetail } from "../Page/ProductDetail/ProductDetail";
 import UserInfo from "../Page/Auth/UserInfo/UserInfo";
+import Search from "../components/Search/Search";
+import Cart from "../components/Cart/CartInfo/CartInfo";
+import Checkout from "../components/Cart/Checkout/Checkout";
+import CheckoutSuccess from "../components/Cart/CheckoutSuccess/CheckoutSuccess";
 
-const routerBeforeLogin = [
-  {
-    path: routerName.HOME,
-    exact: true,
-    component: Home,
-    name: "Home",
-  },
-  {
-    path: routerName.PRODUCT_LIST,
-    exact: true,
-    component: ProductList,
-    name: "ProductList",
-  },
-  {
-    path: routerName.PRODUCT_DETAIL,
-    exact: true,
-    component: ProductDetail,
-    name: "ProductDetail",
-  },
+const authRoute = [
   {
     path: routerName.LOGIN,
     exact: true,
@@ -67,6 +53,27 @@ const routerBeforeLogin = [
     component: PWRecoverySuccess,
     name: "PWRecoverySuccess",
   },
+];
+
+const commonRoute = [
+  {
+    path: routerName.HOME,
+    exact: true,
+    component: Home,
+    name: "Home",
+  },
+  {
+    path: routerName.PRODUCT_LIST,
+    exact: true,
+    component: ProductList,
+    name: "ProductList",
+  },
+  {
+    path: routerName.PRODUCT_DETAIL,
+    exact: true,
+    component: ProductDetail,
+    name: "ProductDetail",
+  },
   {
     path: routerName.USER_INFO,
     exact: true,
@@ -79,18 +86,40 @@ const routerBeforeLogin = [
     component: Test,
     name: "Test",
   },
+  {
+    path: routerName.CART,
+    exact: true,
+    component: Cart,
+    name: "Cart",
+  },
+  {
+    path: routerName.CHECKOUT,
+    exact: true,
+    component: Checkout,
+    name: "Checkout",
+  },
+  {
+    path: routerName.CHECKOUT_SUCCESS,
+    exact: true,
+    component: CheckoutSuccess,
+    name: "CheckoutSuccess",
+  },
+  {
+    path: routerName.SEARCH,
+    exact: true,
+    component: Search,
+    name: "Search",
+  },
 ];
 
-const routerAfterLogin = [];
-
 //Write a function determine route render
-const getTokenFromLocalStorage = () => {
+const checkToken = () => {
   const loginToken = JSON.parse(localStorage.getItem("login-token"));
   if (loginToken) {
-    return routerAfterLogin;
+    return commonRoute;
   } else {
-    return routerBeforeLogin;
+    return [...authRoute, ...commonRoute];
   }
 };
 
-export default routerBeforeLogin;
+export default checkToken();

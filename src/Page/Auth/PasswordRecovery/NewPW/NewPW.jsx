@@ -40,36 +40,38 @@ const NewPW = () => {
   const classesTF = useStyleTextField();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState({
+    newPW: false,
+    retypePW: false,
+  });
   const [modalShow, setModalShow] = useState(false);
   const [result, setResult] = useState("");
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
+  const [isError, setIsError] = useState(true);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
   async function getDataForm(passwordFromNewPWForm) {
-    console.log("passwordFromNewPWForm: ", passwordFromNewPWForm);
+    // console.log("passwordFromNewPWForm: ", passwordFromNewPWForm);
 
     try {
       setIsLoading(true);
       const response = await axiosServices.forgetPW_confirm(token, {
-        password: passwordFromNewPWForm,
+        newPassword: passwordFromNewPWForm,
       });
       // console.log("response", response?.message);
       // res = response?.message;
       setResult(response?.message);
+      setIsError(true);
     } catch (error) {
       // console.log("error", error.response?.data?.message);
       // res = error.response?.data?.message;
       setResult(error.response?.data?.message);
+      setIsError(false);
     } finally {
       setIsLoading(false);
-      // setModalShow(true);
+      setModalShow(true);
     }
   }
 
@@ -135,7 +137,7 @@ const NewPW = () => {
                     Mật khẩu
                   </InputLabel>
                   <Input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword.newPW ? "text" : "password"}
                     name="password"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -147,11 +149,20 @@ const NewPW = () => {
                       <InputAdornment position="end">
                         <IconButton
                           aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
+                          onClick={() =>
+                            setShowPassword({
+                              ...showPassword,
+                              newPW: !showPassword.newPW,
+                            })
+                          }
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword.newPW ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     }
@@ -180,7 +191,7 @@ const NewPW = () => {
                     Nhập lại mật khẩu
                   </InputLabel>
                   <Input
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword.retypePW ? "text" : "password"}
                     name="retypePassword"
                     onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -193,11 +204,20 @@ const NewPW = () => {
                       <InputAdornment position="end">
                         <IconButton
                           aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
+                          onClick={() =>
+                            setShowPassword({
+                              ...showPassword,
+                              retypePW: !showPassword.retypePW,
+                            })
+                          }
                           onMouseDown={handleMouseDownPassword}
                           edge="end"
                         >
-                          {showPassword ? <VisibilityOff /> : <Visibility />}
+                          {showPassword.retypePW ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
                         </IconButton>
                       </InputAdornment>
                     }
@@ -227,7 +247,12 @@ const NewPW = () => {
             </form>
           )}
         </Formik>
-        <ResultModal show={modalShow} onHide={setModalShow} result={result} />
+        <ResultModal
+          show={modalShow}
+          onHide={setModalShow}
+          result={result}
+          isError={isError}
+        />
       </div>
     </div>
   );

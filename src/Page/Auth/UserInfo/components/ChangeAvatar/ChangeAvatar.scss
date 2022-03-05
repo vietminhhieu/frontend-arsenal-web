@@ -1,0 +1,23 @@
+@import "../../../../../sass/variable";
+
+.change-password_form {
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .btn-danger {
+    background-color: $gray2;
+    color: $black;
+    border-color: $gray2;
+  }
+  .btn-danger:hover {
+    background-color: $main-color;
+    border-color: $main-color;
+    color: $white;
+  }
+  .btn-danger:focus {
+    background-color: $main-color;
+    border-color: $main-color;
+  }
+}

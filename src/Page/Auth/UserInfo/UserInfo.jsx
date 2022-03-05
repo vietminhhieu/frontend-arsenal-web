@@ -6,6 +6,7 @@ import {
   AccountCircleOutlined,
   BuildOutlined,
   ExitToAppOutlined,
+  ImageOutlined,
 } from "@material-ui/icons";
 import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import ChangePassword from "./components/ChangePassword/ChangePassword";
@@ -14,6 +15,7 @@ import { Container } from "@material-ui/core";
 import MainHeader from "../../../components/Header/MainHeader/MainHeader";
 import { useHistory } from "react-router-dom";
 import routerName from "../../../Router/RouterName";
+import ChangeAvatar from "./components/ChangeAvatar/ChangeAvatar";
 
 const UserInfo = () => {
   const [render, setRender] = useState("personalInfo");
@@ -57,6 +59,12 @@ const UserInfo = () => {
               </li>
               <li
                 className="block-menu__item"
+                onClick={() => setRender("changeAvatar")}
+              >
+                <ImageOutlined /> <span>Thay đổi ảnh đại diện</span>
+              </li>
+              <li
+                className="block-menu__item"
                 onClick={() => setRender("changePassword")}
               >
                 <BuildOutlined /> <span>Thay đổi mật khẩu</span>
@@ -73,6 +81,7 @@ const UserInfo = () => {
             {render === "home" && history.push(routerName.HOME)}
             {render === "buyHistory" && <h1>Lịch sử mua hàng</h1>}
             {render === "personalInfo" && <PersonalInfo />}
+            {render === "changeAvatar" && <ChangeAvatar />}
             {render === "changePassword" && <ChangePassword />}
             {render === "logOut" && handleLogoutClick()}
           </Col>
